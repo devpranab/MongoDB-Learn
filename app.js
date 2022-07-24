@@ -25,3 +25,24 @@ const studentSchema = new mongoose.Schema({
     type: {type: String}
    }
 });
+
+//Model(class of schema)
+//Creating Mongoose Model And Saving Document
+
+const Student = mongoose.model("StudentDB", studentSchema); //class
+const student = new Student({
+    firstName: "Pranav",
+    lastName: "Sarkar",
+    dob: new Date("25 June 2022"),
+    passed: true,
+    hobbies: ["Singing", "Coding"],
+    parents: {
+        father: "A",
+        mother: "B"
+       },
+    subjects: [{name: "Math", marks: 85}, {name: "Eng", marks: 80}],
+})
+
+student.save() //save() built-in method
+.then(data => console.log(data))
+.catch(err => console.log(err));
