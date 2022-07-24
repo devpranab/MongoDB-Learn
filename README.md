@@ -57,3 +57,7 @@ now we will use compass softwere for crud operation
 download compass softwere from mongodb.com
 #connect with mongodb soft with compass soft.
 open compass>Fill in connection fields individually(uto fill up)>connect>show database & have crud option
+
+---------------------------------------------------------------------------------------
+<h2> Working with mongoose </h2>
+https://mongoosejs.com/docs/guide.html
