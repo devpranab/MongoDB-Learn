@@ -63,7 +63,28 @@ async function readStudents(){
     //const studentsData = await Student.find().limit(2);
     //const studentsData = await Student.find().sort({firstName: -1});
     //const studentsData = await Student.find().select({firstName: 1, lastName: 1, hobbies: 1});
+    //const studentsData = await Student.find().countDocuments(); //count show
     console.log(studentsData);
 }
 
 readStudents();
+
+//U=update
+async function updateStudents(id){
+    const student = await Student.updateOne({_id: id},{
+    $set: {
+        passed: false
+    }});
+    console.log(student);
+}
+
+//updateStudents("62dd5283d26e6539b6e8c204");
+
+//D=delete
+async function deleteStudents(id){
+    const student = await Student.deleteOne({_id: id});
+
+    console.log(student);
+}
+
+deleteStudents("62dd5283d26e6539b6e8c204");
