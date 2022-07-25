@@ -58,9 +58,14 @@ async function createStudent(){
             subjects: [{name: "Math", marks: 85}, {name: "Eng", marks: 80}]
         });
     console.log(data);
-
-    }catch(err){
-        console.log(err.message);
+    }
+    // catch(err){
+    //     console.log(err.errors); //errors - built-in obj,return all error field
+    // }
+    catch(err){
+        for(field in err.errors){
+            console.log(err.errors[field].message);
+        }
     }
 }
 
