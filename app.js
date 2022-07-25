@@ -10,7 +10,7 @@ mongoose.connect('mongodb://localhost:27017/my-students')
 //Mongoose Schema(define the shapes documents)
 const studentSchema = new mongoose.Schema({
    firstName: {type: String},
-   lastName: String,
+   lastName: {type: String, required: [true, "please insert lastname"]},
    dob: Date,
    entryDate: {type: Date, default: Date.now},
    passed: Boolean,
@@ -34,27 +34,27 @@ const Student = mongoose.model("Student", studentSchema); //class
 //C=create
 //handle using async await
 async function createStudent(){
-const student = new Student({
-    firstName: "Ashis",
-    lastName: "Mandal",
-    dob: new Date("25 June 2022"),
-    passed: true,
-    hobbies: ["Singing", "Coding"],
-    parents: {
-        father: "A",
-        mother: "B"
-       },
-    subjects: [{name: "Math", marks: 85}, {name: "Eng", marks: 80}]
-})
- try{
-    const data = await student.save();
+    try{
+        const data = await Student.create({ //another way to create
+            firstName: "Mnis",
+            //lastName: "Mandal",
+            dob: new Date("25 June 2022"),
+            passed: true,
+            hobbies: ["Singing", "Coding"],
+            parents: {
+                father: "A",
+                mother: "B"
+               },
+            subjects: [{name: "Math", marks: 85}, {name: "Eng", marks: 80}]
+        });
     console.log(data);
- } catch(err){
-    console.log(err._message);
- }
+
+    }catch(err){
+        console.log(err.message);
+    }
 }
 
-//createStudent();
+createStudent();
 
 //R=read
 async function readStudents(){
@@ -88,3 +88,6 @@ async function deleteStudents(id){
 }
 
 deleteStudents("62dd5283d26e6539b6e8c204");
+
+
+//Follow docs for more built-In validators(mongoosejs.com)
