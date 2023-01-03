@@ -3,61 +3,69 @@ MongoDB Database
 
 Frontend - express - database
 
-01. Intro to MongoDB: - Database - store json database(collection)
-1 Installing Mongodb (Windows)
--https://www.mongodb.com/try/download/community
-Instll process: install-run-next-complete-run-service-network service user-install
+1. Installing Mongodb (Windows)
+- https://www.mongodb.com/try/download/community
+- Download MongoDB softwere & install.
+- MongoDB is database which store json data.
+- Express(api system) works as middleman with client-side & database.
 
-2 Running Mongodb Server:
-Open Terminal>cd "C:\Program Files\MongoDB\Server\5.0\bin"
->dir
-create folder data_db in c drive
->add path var: env - path - edit - new - add path
->open terminal - mongod.exe - on server (addr & port) - keep server
->open new terminal - mongo.exe -for connect to server
+2. Running Mongodb Server
+- Open Terminal
+- cd "C:\Program Files\MongoDB\Server\5.0\bin"
+- dir //what file have show
+- mongod.exe (not found this cd)
+- mongod.exe (again run server)
+- Edit the system Environment variables - C:\Program Files\MongoDB\Server\4.2\bin
 
->cls - clear screen
+3. Crud Operations (Create)
+_Command Prompt - mongo.exe
+- > use my-test (create)
+- > db.students.insertOne({name: "Pranav Sarkar", age: 18, hobbies: ["A","B"]}) (data insert, n here students is collection)
+- > db.students.find()
+- > db.students.insertMany([{},{},{}])
+- > db.students.find()
+- > show dbs
+- > use my-test (switch on my-test database)
 
-3 Crud Operations (Create):
->use my-test //switch to my-test database(create)
->db.students.insertOne({name: "pranav", age: 21, prof: "programmer"}) //true,objectId
->db.students.find() - show data
->db.students.insertMany([{name: "lutful", age: 25, prof: "designer"}], [{name: "danish", age: 20, prof: "marketer"}])
->show dbs - show all database
--admin(default db)
-config(default db)
-local(default db)
-my-test(our created db)
+4. Crud Operations (Read)
+- > db.students.find().pretty()
+- > db.students.find({name: "Pranav"})
+- > db.students.find({name: "Pranav"}).pretty()
+- > db.students.find().limit(2)
+- > db.students.find({age: 20})
+- > db.students.find({age: {$lte: 20}})
+- > db.students.find({age: {$lt: 20}})
+- > db.students.find({age: {$gt: 20}})
+- > db.students.find({name: "pranav sarkar", age:20}) //search multi field
+- > db.students.find({$or: [{name: "pranav"}, {age: 22}]}) //or condition
 
-concepts: students - collection name
-
-4 Crud Operations (Read):
->db.students.find().pretty() - format
->db.students.find({name: "pranav"})
->db.students.find({name: "pranav"}).pretty()
->db.students.find().limit(1)
->db.students.find().limit(2)
->db.students.find({age: {$lte: 25}}) //on condition
->db.students.find({age: {$lt: 25}})
->db.students.find({age: {$gte: 21}})
->db.students.find({$or: [{name: "pran"}, {age: 21}]}) //or condition
-
-5 Crud Operations (Update And Delete) by shell:
->db.students.find().pretty()
->db.students.updateOne({name: "pranav"}, {$set: {age: 20}}) -whom+set
->db.students.updateMany({name: "pranav"}, {$set: {age: 20}})
->db.students.deleteOne({age: 27})
->db.students.deleteMany({age: 27})
+5. Crud Operations (Update And Delete)
+- > db.students.updateOne({name: "pranav"}, {$set: {age: 23}})
+- > db.students.updateMany({name: "pranav"}, {$set: {age: 23}})
+- > db.students.deleteOne({age: 22})
+- > db.students.deleteMany()
+- > db.students.find().pretty()
+- docs/mongodb.com/manual/crud/ for more
 
 docs/mongodb.com/manual/crud/ for more
 
-6 Mongodb Compass:
-we used cmd & mongodb shell 
+6. Mongodb Compass
+- we used cmd & mongodb shell 
 now we will use compass softwere for crud operation
 download compass softwere from mongodb.com
 #connect with mongodb soft with compass soft.
-open compass>Fill in connection fields individually(uto fill up)>connect>show database & have crud option
+open compass>Fill in connection fields individually(uto fill up)>connect>show database & have crud option.
+- Download - https://www.mongodb.com/docs/compass/current/install/
 
 ---------------------------------------------------------------------------------------
-<h2> Working with mongoose </h2>
 https://mongoosejs.com/docs/guide.html
+### Working with Mongoose
+1. Connecting To Mongodb
+2. Mongoose Schema
+3. Schema Types
+4. Creating Model And Saving Document
+5. Querying Documents
+6. Updating And Deleting Documents
+7. Built-In Validators
+8. Custom Validators
+9. Error Messages
